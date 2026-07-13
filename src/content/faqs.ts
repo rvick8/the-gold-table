@@ -1,0 +1,18 @@
+export const faqs = [
+  ["Is the valuation free?", "Yes. Event valuations are free, private and carry no obligation to sell."],
+  ["Do I have to sell?", "No. We explain what we find and any offer we can make; you decide what happens next."],
+  ["What items can I bring?", "Gold and silver jewellery, broken pieces, coins, watches and inherited collections are welcome. We cannot promise that every item can be purchased."],
+  ["Can I bring broken jewellery?", "Yes. Broken chains, single earrings and damaged or unfashionable pieces may still contain precious metal."],
+  ["How long does a valuation take?", "Most reserved appointments are 15 minutes. Larger collections may take longer."],
+  ["How do you test the gold?", "The valuer may inspect hallmarks, weigh items and use appropriate non-destructive or minimally invasive testing methods, explaining the process as they go."],
+  ["How do you calculate the value?", "The offer considers metal content, weight, condition, possible resale value and the relevant market price. We explain the basis before you decide."],
+  ["Will I be paid on the day?", "Prompt or same-day payment may be available if you choose to sell, subject to confirmed operational, identity and payment requirements. Final wording requires review before launch."],
+  ["What identification do I need?", "Identification requirements for sellers must be confirmed as part of the UK legal and AML review before launch."],
+  ["Can I attend without an appointment?", "Some events welcome walk-ins. Check the individual event page; reserved guests are prioritised."],
+  ["Can I bring several items?", "Yes. Bring as many as you can comfortably carry, but a larger collection may need extra time."],
+  ["Do you buy silver or watches?", "We can assess many silver items and watches, though not every item will be suitable for purchase."],
+  ["What happens if I do not accept the offer?", "You simply take your items home. There is no charge and no pressure to sell."],
+  ["Are valuations private?", "Yes. Events are arranged to keep conversations and valuations discreet."],
+  ["Can I mail my items instead?", "A mail-in route is planned for people who cannot attend. Insurance and returns terms must be confirmed before launch."],
+  ["How can my venue host an event?", "Complete the host enquiry form and we will discuss the space, timing and practical arrangements."],
+] as const;

@@ -1,0 +1,12 @@
+// Production AI photography prompts. Generate, review, optimise and replace SVG placeholders before launch.
+const base = "Hyper-realistic documentary lifestyle photograph, full-frame DSLR appearance, natural depth of field, realistic skin texture, warm natural venue lighting, candid British setting, calm and trustworthy, no text, no watermark, no visible cash, no exaggerated smiles, no luxury jewellery store, no AI artefacts.";
+export const imagePrompts = {
+  homepageHero: `${base} Approachable male or female gold valuation expert in a navy blazer and cream Oxford shirt speaking with a smiling older customer at a navy-covered table in a warm attractive British pub or golf club. Subtle antique-gold branding using The Gold Table's blocky three-rectangle table mark, small scales, loupe and jewellery tray; calm private consultation; landscape 3:2.`,
+  jewelleryDrawer: `${base} Older British person naturally opening a wooden dresser drawer containing a small jewellery box with rings, chains and inherited jewellery; domestic discovery and curiosity, not luxury; landscape 4:3.`,
+  valuationCloseUp: `${base} Close-up of an appraiser carefully examining a gold ring with a loupe while an older customer watches; hands, tools and faces natural; landscape 4:3.`,
+  pubEvent: `${base} Wider scene of a small Gold Table valuation event inside a warm British pub, several local attendees waiting comfortably, discreet navy table setup; landscape 3:2.`,
+  golfClubEvent: `${base} Professional valuation table inside a traditional but approachable British golf clubhouse, older customer and friendly expert; landscape 3:2.`,
+  customerInteraction: `${base} Older British woman or couple receiving a clear explanation from an appraiser and reacting with gentle pleasant surprise, no extreme shock; landscape 4:3.`,
+  mailInPack: `${base} Secure well-designed navy valuation pack on a real British kitchen table with protective packaging, clear instructions and a small jewellery box. Apply The Gold Table's blocky three-rectangle table mark consistently in muted gold on the owned navy materials; top-down three-quarter view; landscape 4:3.`,
+  venueHost: `${base} British pub or golf club manager speaking with a Gold Table representative inside the venue, relaxed professional planning conversation, with subtle navy event materials branded using The Gold Table's blocky three-rectangle table mark; landscape 4:3.`,
+};

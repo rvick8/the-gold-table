@@ -1,0 +1,5 @@
+import type { Metadata } from "next";
+import { legalPlaceholders } from "@/content/legal";
+import { Breadcrumbs } from "@/components/breadcrumbs";
+export const metadata:Metadata={title:"Privacy policy — draft",robots:{index:false,follow:true}};
+export default function Privacy(){return <><Breadcrumbs items={[{label:"Privacy Policy"}]}/><section className="section"><div className="container prose"><h1>Privacy policy</h1><p className="placeholder-note"><strong>Draft placeholder — legal review required.</strong> This page must not be treated as the final privacy notice.</p><p>The Gold Table will use personal information submitted through this website to respond to enquiries, manage event reservations and arrange requested services. A complete privacy notice must be approved before launch.</p><h2>Required before launch</h2><ul>{legalPlaceholders.privacy.map(x=><li key={x}>{x}</li>)}</ul><h2>Current form flow</h2><p>Validated form submissions are sent server-side to Hookdeck for routing. The webhook address is never exposed to the browser. Development submissions are logged locally when no webhook is configured.</p></div></section></>}
