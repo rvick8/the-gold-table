@@ -144,7 +144,7 @@ footer > div:last-child { text-align: right; }
   .hero h1 { font-size: 44px; line-height: 1.02; }
   .lede { font-size: 16px; line-height: 1.6; }
   .hero-actions { align-items: flex-start; flex-direction: column; }
-  .eyebrow { font-size: 13px; line-height: 1.5; }
+  .eyebrow { font-size: 14px; line-height: 1.5; }
   .assurances { display: grid; font-size: 14px; line-height: 1.5; }
   .hero-image img { aspect-ratio: 4/3; }
   .price-story { gap: 36px; }
@@ -152,13 +152,14 @@ footer > div:last-child { text-align: right; }
   .chart-head { align-items: start; }
   .chart-stat strong { font-size: 36px; }
   .chart-head p,.chart-stat span { font-size: 14px; line-height: 1.45; }
-  .chart-card figcaption { font-size: 13px; line-height: 1.6; }
+  .axis-label,.value-label { font-size: 14px; }
+  .chart-card figcaption { font-size: 14px; line-height: 1.6; }
   .item-grid,.step-grid,.trust-grid { grid-template-columns: 1fr; }
   .item-card p,.trust-grid dd { font-size: 14px; line-height: 1.6; }
   .trust-grid { gap: 0; }
   .trust-grid div,.trust-grid div:nth-child(3) { padding: 18px 0; border-left: 0; border-top: 1px solid rgba(255,255,255,.15); }
   .rate-intro,.rate-table { padding: 30px 22px; }
-  .formula span,.formula small,.rate-table > p { font-size: 13px; line-height: 1.55; }
+  .formula span,.formula small,.rate-table > p { font-size: 14px; line-height: 1.55; }
   .rate-table dl div { padding-inline: 16px; }
   .rate-table dd { font-size: 24px; }
   .faq-list div { grid-template-columns: 1fr; gap: 8px; padding: 20px; }
