@@ -4,6 +4,7 @@
   --ink: #1c241d;
   --olive: #273827;
   --gold: #b59245;
+  --gold-text: #80621f;
   --cream: #f8f5ed;
   --warm: #eee8db;
   --line: #dcd4c3;
@@ -27,7 +28,7 @@ h1,h2,h3,.wordmark,.chart-stat strong,.rate-table dd { font-family: Georgia, "Ti
 .button-small { min-height: 40px; padding: 0 18px; }
 .button-full { width: 100%; }
 .text-link { border-bottom: 1px solid var(--line); padding-bottom: 3px; font-size: 14px; font-weight: 700; }
-.eyebrow { color: var(--gold); font-size: 12px; font-weight: 750; letter-spacing: .2em; text-transform: uppercase; }
+.eyebrow { color: var(--gold-text); font-size: 12px; font-weight: 750; letter-spacing: .2em; text-transform: uppercase; }
 
 .hero { max-width: 1280px; margin: auto; padding: 56px 32px 64px; display: grid; grid-template-columns: 1.35fr .8fr; gap: 48px 64px; align-items: start; }
 .hero-copy { padding-top: 20px; }
@@ -35,13 +36,13 @@ h1,h2,h3,.wordmark,.chart-stat strong,.rate-table dd { font-family: Georgia, "Ti
 .lede { max-width: 640px; margin-top: 24px; color: var(--muted); font-size: 18px; line-height: 1.65; }
 .hero-actions { display: flex; align-items: center; gap: 26px; margin-top: 30px; }
 .assurances { display: flex; flex-wrap: wrap; gap: 18px 28px; margin: 28px 0 0; padding: 20px 0 0; border-top: 1px solid var(--line); list-style: none; color: var(--muted); font-size: 12px; }
-.assurances span { margin-right: 7px; color: var(--gold); font-weight: 800; }
+.assurances span { margin-right: 7px; color: var(--gold-text); font-weight: 800; }
 .event-card { overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: #fffdf8; box-shadow: 0 28px 65px -48px rgba(28,36,29,.7); }
 .event-card-title { padding: 19px 24px; border-bottom: 1px solid rgba(255,255,255,.12); background: var(--olive); color: #fff; font-family: Georgia,serif; font-size: 23px; }
 .event-card-body { padding: 28px; }
 .event-card-body h2 { margin: 11px 0 8px; font-size: 34px; font-weight: 500; }
 .event-card-body p { margin-top: 8px; color: var(--muted); }
-.event-card-body .event-date { color: var(--gold); font-weight: 800; }
+.event-card-body .event-date { color: var(--gold-text); font-weight: 800; }
 .event-card-body .button { margin-top: 26px; }
 .hero-image { grid-column: 1/-1; overflow: hidden; border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 28px 70px -54px rgba(28,36,29,.8); }
 .hero-image img { aspect-ratio: 21/8; object-fit: cover; }
@@ -78,6 +79,7 @@ h1,h2,h3,.wordmark,.chart-stat strong,.rate-table dd { font-family: Georgia, "Ti
 .item-card p { margin-top: 6px; color: var(--muted); font-size: 13px; line-height: 1.5; }
 
 .process { padding: 76px max(32px,5vw); background: var(--olive); color: #fff; }
+.process .eyebrow,.rate-intro .eyebrow { color: #d4b766; }
 .light h2 { color: #fff; }
 .step-grid { margin: 36px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; list-style: none; }
 .step-number { display: block; margin-bottom: 9px; color: var(--gold); font-family: Georgia,serif; font-size: 24px; }
@@ -139,22 +141,29 @@ footer > div:last-child { text-align: right; }
   .hero,.section,.process,.price-story { padding: 48px 18px; }
   .hero { gap: 30px; }
   .hero-copy { padding-top: 0; }
-  .hero h1 { font-size: 47px; }
+  .hero h1 { font-size: 44px; line-height: 1.02; }
+  .lede { font-size: 16px; line-height: 1.6; }
   .hero-actions { align-items: flex-start; flex-direction: column; }
-  .assurances { display: grid; }
+  .eyebrow { font-size: 13px; line-height: 1.5; }
+  .assurances { display: grid; font-size: 14px; line-height: 1.5; }
   .hero-image img { aspect-ratio: 4/3; }
   .price-story { gap: 36px; }
   .chart-card { padding: 20px; }
   .chart-head { align-items: start; }
   .chart-stat strong { font-size: 36px; }
+  .chart-head p,.chart-stat span { font-size: 14px; line-height: 1.45; }
+  .chart-card figcaption { font-size: 13px; line-height: 1.6; }
   .item-grid,.step-grid,.trust-grid { grid-template-columns: 1fr; }
+  .item-card p,.trust-grid dd { font-size: 14px; line-height: 1.6; }
   .trust-grid { gap: 0; }
   .trust-grid div,.trust-grid div:nth-child(3) { padding: 18px 0; border-left: 0; border-top: 1px solid rgba(255,255,255,.15); }
   .rate-intro,.rate-table { padding: 30px 22px; }
+  .formula span,.formula small,.rate-table > p { font-size: 13px; line-height: 1.55; }
   .rate-table dl div { padding-inline: 16px; }
   .rate-table dd { font-size: 24px; }
   .faq-list div { grid-template-columns: 1fr; gap: 8px; padding: 20px; }
   footer { flex-direction: column; padding: 32px 18px; }
+  footer p,footer a:not(.wordmark) { font-size: 14px; line-height: 1.55; }
   footer > div:last-child { text-align: left; }
 }
 
