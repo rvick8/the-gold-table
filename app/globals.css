@@ -47,6 +47,7 @@ h1,h2,h3,.wordmark,.chart-stat strong,.rate-table dd { font-family: Georgia, "Ti
 .hero-image img { aspect-ratio: 21/8; object-fit: cover; }
 
 .price-story { padding: 76px max(32px,5vw); display: grid; grid-template-columns: minmax(260px,.65fr) 1.35fr; gap: 72px; align-items: center; border-block: 1px solid var(--line); background: var(--warm); }
+.story-copy,.chart-card { min-width: 0; }
 .story-copy h2,.section-heading h2,.rate-intro h2,.closing h2 { margin-top: 12px; font-size: clamp(40px,4.6vw,58px); line-height: 1.04; letter-spacing: -.03em; font-weight: 500; }
 .story-copy > p:not(.eyebrow) { margin-top: 20px; color: var(--muted); line-height: 1.6; }
 .story-copy .story-note { padding-left: 16px; border-left: 2px solid var(--gold); color: var(--ink); font-size: 14px; }
@@ -56,7 +57,7 @@ h1,h2,h3,.wordmark,.chart-stat strong,.rate-table dd { font-family: Georgia, "Ti
 .chart-head p,.chart-stat span { margin-top: 5px; color: var(--muted); font-size: 12px; }
 .chart-stat { text-align: right; }
 .chart-stat strong { display: block; color: var(--olive); font-size: 44px; font-weight: 500; }
-.chart-scroll { margin-top: 18px; overflow-x: auto; }
+.chart-scroll { max-width: 100%; margin-top: 18px; overflow-x: auto; overscroll-behavior-inline: contain; }
 .chart-scroll svg { display: block; min-width: 620px; width: 100%; }
 .grid-line { stroke: var(--line); stroke-width: 1; }
 .axis-label { fill: var(--muted); font-size: 12px; }
@@ -122,7 +123,7 @@ footer > div:last-child { text-align: right; }
 @media (max-width: 900px) {
   .site-header { grid-template-columns: 1fr auto; }
   .site-header nav { display: none; }
-  .hero,.price-story,.rate-panel { grid-template-columns: 1fr; }
+  .hero,.price-story,.rate-panel { grid-template-columns: minmax(0,1fr); }
   .hero { gap: 34px; }
   .hero-image { grid-column: auto; }
   .hero-image img { aspect-ratio: 16/9; }
@@ -132,8 +133,8 @@ footer > div:last-child { text-align: right; }
 }
 
 @media (max-width: 620px) {
-  .site-header { height: 64px; padding-inline: 18px; }
-  .site-header .wordmark { font-size: 19px; }
+  .site-header { height: 64px; gap: 12px; padding-inline: 18px; }
+  .site-header .wordmark { font-size: 17px; }
   .button-small { min-height: 38px; padding-inline: 13px; }
   .hero,.section,.process,.price-story { padding: 48px 18px; }
   .hero { gap: 30px; }
@@ -155,6 +156,12 @@ footer > div:last-child { text-align: right; }
   .faq-list div { grid-template-columns: 1fr; gap: 8px; padding: 20px; }
   footer { flex-direction: column; padding: 32px 18px; }
   footer > div:last-child { text-align: left; }
+}
+
+@media (max-width: 420px) {
+  .chart-head { align-items: flex-start; flex-direction: column; gap: 12px; }
+  .chart-stat { text-align: left; }
+  .chart-stat strong { font-size: 32px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
