@@ -30,7 +30,7 @@ export default function HowItWorksPage() {
           <p>Our events give you a straightforward, face-to-face way to understand what you own and hear an offer if we can buy it.</p>
           <Link className="button button--gold" href="/events">Find an event <span aria-hidden="true">→</span></Link>
         </div>
-        <div className="inner-hero__media"><Image src="/images/gold-table-valuation-hero-branded.png" alt="A Gold Table valuer examining a ring with a customer" fill preload sizes="(max-width: 900px) 100vw, 48vw" /></div>
+        <div className="inner-hero__media"><Image src="/images/gold-table-valuation-event-v2.png" alt="A Gold Table valuer explaining a ring to a customer at a local event" fill preload sizes="(max-width: 900px) 100vw, 48vw" /></div>
       </div>
     </section>
 
@@ -54,7 +54,7 @@ export default function HowItWorksPage() {
 
     <section className="section offer-section" aria-labelledby="offer-heading">
       <div className="container offer-section__grid">
-        <div className="offer-section__media"><Image src="/images/jewellery-drawer.jpg" alt="Jewellery discovered in a wooden drawer" fill sizes="(max-width: 900px) 100vw, 45vw" /></div>
+        <div className="offer-section__media"><Image src="/images/gold-table-preparing-for-event-v2.png" alt="Hands preparing inherited jewellery to bring to a Gold Table event" fill sizes="(max-width: 900px) 100vw, 45vw" /></div>
         <div>
           <p className="eyebrow">Understanding an offer</p>
           <h2 id="offer-heading">Value depends on more than one number.</h2>

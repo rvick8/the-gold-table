@@ -11,8 +11,8 @@ export const metadata = createPageMetadata({
   canonical: "/mail-in",
   robots: site.mailIn.enabled ? undefined : { index: false, follow: true },
   image: {
-    url: "/images/gold-table-mail-pack-branded.png",
-    alt: "A secure Gold Table valuation pack on a kitchen table",
+    url: "/images/gold-table-mail-pack-v2.png",
+    alt: "A secure, unbranded valuation pack on a kitchen table",
   },
 });
 
@@ -45,7 +45,7 @@ export default function MailIn() {
           <p className="content-hero__intro">Request a secure valuation pack and receive clear instructions for sending your items.</p>
           <p>Insurance and return arrangements must be confirmed before this service launches.</p>
         </div>
-        <Image src="/images/gold-table-mail-pack-branded.png" alt="A secure Gold Table valuation pack on a kitchen table" width={800} height={650} preload className="content-hero__image" />
+        <Image src="/images/gold-table-mail-pack-v2.png" alt="A secure, unbranded valuation pack on a kitchen table" width={1448} height={1086} preload className="content-hero__image" />
       </div>
     </section>
     <section className="section section--paper">

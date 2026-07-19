@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { site } from "@/content/site";
 
 const defaultSocialImage = {
-  url: "/images/gold-table-valuation-hero-branded.png",
-  alt: "A Gold Table valuer examining jewellery with a customer",
+  url: "/images/gold-table-valuation-event-v2.png",
+  alt: "A Gold Table valuer explaining a ring to a customer at a local event",
 };
 
 type PageMetadataOptions = {

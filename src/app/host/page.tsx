@@ -8,8 +8,8 @@ export const metadata = createPageMetadata({
   description: "Bring a professionally managed gold valuation event to your pub, hotel, golf club or community venue. See the benefits and make a quick venue enquiry.",
   canonical: "/host",
   image: {
-    url: "/images/gold-table-host-venue-branded.png",
-    alt: "A venue manager planning a Gold Table event with a representative",
+    url: "/images/gold-table-host-event-v2.png",
+    alt: "A venue manager and Gold Table coordinator planning an event-day setup",
   },
 });
 
@@ -59,7 +59,7 @@ export default function HostPage() {
     <section className="section venue-benefits" aria-labelledby="venue-benefits-heading">
       <div className="container venue-benefits__grid">
         <div className="venue-benefits__media">
-          <Image src="/images/gold-table-host-venue-branded.png" alt="A venue manager planning a Gold Table event with a representative" fill preload sizes="(max-width: 900px) 100vw, 47vw" />
+          <Image src="/images/gold-table-host-event-v2.png" alt="A venue manager and Gold Table coordinator planning an event-day setup" fill preload sizes="(max-width: 900px) 100vw, 47vw" />
           <div className="image-label">Professionally planned. Locally promoted.</div>
         </div>
         <div>

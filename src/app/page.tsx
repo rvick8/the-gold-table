@@ -61,8 +61,8 @@ export default function Home() {
         </div>
         <div className="home-hero__media">
           <Image
-            src="/images/gold-table-valuation-hero-branded.png"
-            alt="A Gold Table valuer carefully examining a ring with a customer"
+            src="/images/gold-table-valuation-event-v2.png"
+            alt="A Gold Table valuer carefully explaining a ring to a customer at a local event"
             fill
             preload
             sizes="(max-width: 700px) 1px, (max-width: 900px) 100vw, 50vw"
@@ -123,8 +123,8 @@ export default function Home() {
       <div className="container process-section__grid">
         <div className="process-section__media">
           <Image
-            src="/images/valuation-close-up.jpg"
-            alt="A valuation expert inspecting a gold ring through a loupe"
+            src="/images/gold-table-valuation-close-up-v2.png"
+            alt="A Gold Table valuer inspecting a ring with a loupe while a customer watches"
             fill
             sizes="(max-width: 900px) 100vw, 46vw"
           />
@@ -203,8 +203,8 @@ export default function Home() {
       <div className="container venue-promo__grid">
         <div className="venue-promo__media">
           <Image
-            src="/images/gold-table-host-venue-branded.png"
-            alt="A venue manager planning a Gold Table event"
+            src="/images/gold-table-host-event-v2.png"
+            alt="A venue manager and Gold Table coordinator planning an event-day setup"
             fill
             sizes="(max-width: 900px) 100vw, 44vw"
           />

@@ -44,7 +44,7 @@ Configure Hookdeck routing and the downstream CRM separately. The in-memory rate
 
 ## Images
 
-The current branded images support the preview experience but are not operational proof. Replace them with consistent, consented photography from real valuers, customers and venues, ideally delivered as optimised AVIF/WebP files. Detailed image prompts remain in `src/content/image-prompts.ts` for controlled concept work.
+The v2 image set is a controlled ChatGPT Image concept set, created to give the preview a coherent, event-day visual language. It is not operational proof. Before launch, replace it with consented photography from real valuers, customers and venues, ideally delivered as optimised AVIF/WebP files. The production brief is in [`docs/image-direction.md`](docs/image-direction.md); controlled concept prompts remain in `src/content/image-prompts.ts`.
 
 ## Deployment
 

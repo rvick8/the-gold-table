@@ -31,17 +31,17 @@ export const metadata: Metadata = {
     title: "The Gold Table | Local gold-buying events",
     description: site.description,
     images: [{
-      url: "/images/gold-table-valuation-hero-branded.png",
+      url: "/images/gold-table-valuation-event-v2.png",
       width: 1672,
       height: 941,
-      alt: "A Gold Table valuer examining jewellery with a customer",
+      alt: "A Gold Table valuer explaining a ring to a customer at a local event",
     }],
   },
   twitter: {
     card: "summary_large_image",
     title: "The Gold Table | Local gold-buying events",
     description: site.description,
-    images: ["/images/gold-table-valuation-hero-branded.png"],
+    images: ["/images/gold-table-valuation-event-v2.png"],
   },
 };
 
