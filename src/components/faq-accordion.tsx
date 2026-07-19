@@ -1,1 +1,8 @@
-export function FaqAccordion({ items }:{items:readonly (readonly [string,string])[]}){ return <div style={{borderTop:"1px solid var(--border)"}}>{items.map(([question,answer])=><details key={question} style={{borderBottom:"1px solid var(--border)",padding:"1rem 0"}}><summary style={{fontWeight:700,cursor:"pointer",fontSize:"1.05rem"}}>{question}</summary><p className="prose muted">{answer}</p></details>)}</div> }
+export function FaqAccordion({ items }: { items: readonly (readonly [string, string])[] }) {
+  return <div className="faq-accordion">
+    {items.map(([question, answer]) => <details key={question}>
+      <summary>{question}<span aria-hidden="true">+</span></summary>
+      <p>{answer}</p>
+    </details>)}
+  </div>;
+}

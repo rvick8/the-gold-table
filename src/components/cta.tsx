@@ -1,2 +1,0 @@
-import Link from "next/link";
-export function Cta({title="Find out what your gold is worth.",href="/events",label="View Upcoming Events"}:{title?:string;href?:string;label?:string}){ return <section style={{background:"var(--navy)",color:"white",padding:"4rem 0"}}><div className="container" style={{display:"flex",alignItems:"center",justifyContent:"space-between",gap:24,flexWrap:"wrap"}}><h2 style={{color:"white",margin:0}}>{title}</h2><Link className="button" href={href}>{label}</Link></div></section> }

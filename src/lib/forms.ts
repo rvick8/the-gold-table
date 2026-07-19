@@ -15,9 +15,9 @@ export function sanitiseText(value: string) {
 const contactRefinement = <T extends z.ZodRawShape>(schema: z.ZodObject<T>) => schema.refine((data) => Boolean((data as {email?: string}).email || (data as {phone?: string}).phone), { message: "Provide an email address or phone number", path: ["email"] });
 
 export const eventReservationSchema = contactRefinement(z.object({
-  form_type: z.literal("event_reservation"), firstName: text("First name", 80), lastName: text("Last name", 80), email, phone,
+  form_type: z.literal("event_reservation"), firstName: text("First name", 80), lastName: optionalText(80), email, phone,
   preferredTime: appointmentTime, message: optionalText(), consent, website: z.string().max(0).optional().or(z.literal("")),
-  eventId: z.string(), eventSlug: z.string(), eventName: z.string(), eventDate: z.string(), eventAddress: z.string(), ...metadata.shape,
+  eventSlug: z.string().trim().min(1).max(160), ...metadata.shape,
 }));
 
 export const mailInSchema = z.object({
@@ -26,11 +26,14 @@ export const mailInSchema = z.object({
 });
 
 export const hostSchema = contactRefinement(z.object({
-  form_type: z.literal("host_enquiry"), firstName: text("First name", 80), lastName: text("Last name", 80), businessName: text("Business or venue name"), email, phone,
-  websiteUrl: z.string().url("Enter a full website URL").optional().or(z.literal("")), addressLine1: text("Address line 1"), addressLine2: optionalText(160), town: text("Town or city"), county: optionalText(100), postcode: text("Postcode", 12), venueType: text("Venue type", 60), estimatedCapacity: optionalText(30), preferredDates: optionalText(300), message: optionalText(), consent, website: z.string().max(0).optional().or(z.literal("")), ...metadata.shape,
+  form_type: z.literal("host_enquiry"), firstName: text("Contact name", 80), lastName: optionalText(80), businessName: text("Business or venue name"), email, phone,
+  postcode: text("Venue postcode", 12), venueType: optionalText(60), message: optionalText(), consent, website: z.string().max(0).optional().or(z.literal("")), ...metadata.shape,
 }));
 
-export const generalContactSchema = contactRefinement(z.object({ form_type: z.literal("general_contact"), firstName: text("First name", 80), lastName: text("Last name", 80), email, phone, message: text("Message", 1000), consent, website: z.string().max(0).optional().or(z.literal("")), ...metadata.shape }));
+export const eventInterestSchema = contactRefinement(z.object({
+  form_type: z.literal("event_interest"), firstName: text("First name", 80), email, phone, postcode: text("Postcode", 12),
+  message: optionalText(300), consent, website: z.string().max(0).optional().or(z.literal("")), ...metadata.shape,
+}));
 
 export type FormResponse = { success: true; message: string; submissionId?: string; development?: boolean } | { success: false; message: string; fieldErrors?: Record<string, string[]> };
 
@@ -39,6 +42,6 @@ export function validateForm(payload: unknown) {
   if (type === "event_reservation") return eventReservationSchema.safeParse(payload);
   if (type === "mail_in_pack_request") return mailInSchema.safeParse(payload);
   if (type === "host_enquiry") return hostSchema.safeParse(payload);
-  if (type === "general_contact") return generalContactSchema.safeParse(payload);
+  if (type === "event_interest") return eventInterestSchema.safeParse(payload);
   return { success: false as const, error: { flatten: () => ({ fieldErrors: {} }) } };
 }

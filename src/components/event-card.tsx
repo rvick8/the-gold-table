@@ -1,5 +1,16 @@
 import Link from "next/link";
-import Image from "next/image";
 import type { GoldTableEvent } from "@/content/events";
 import { formatEventDate, formatEventTime, getEventStatus } from "@/lib/events";
-export function EventCard({event,showImage=false}:{event:GoldTableEvent;showImage?:boolean}){ const status=getEventStatus(event); return <article className="card" style={{display:"grid",gap:12}}>{showImage&&<Image src={event.image} alt={event.imageAlt} width={800} height={520} style={{width:"100%",height:"auto",aspectRatio:"3/2",objectFit:"cover"}}/>}<div><span style={{fontSize:13,fontWeight:800,textTransform:"uppercase",letterSpacing:".08em",color:status==="upcoming"?"#456b55":"var(--slate)"}}>{status}</span><h3 style={{margin:".3rem 0"}}>{event.venueName}</h3><p className="muted" style={{margin:0}}>{event.town}, {event.borough} · {event.venueType}</p></div><p style={{margin:0}}><strong>{formatEventDate(event.startDateTime)}</strong><br/>{formatEventTime(event.startDateTime)}–{formatEventTime(event.endDateTime)}</p><p style={{margin:0}}>{event.shortDescription}</p><p style={{margin:0}}>{event.walkInsWelcome?"Walk-ins welcome":"Reserved appointments only"}</p><div style={{display:"flex",gap:18,flexWrap:"wrap"}}><Link href={`/events/${event.slug}`}>View Event</Link>{status==="upcoming"&&<Link href={`/events/${event.slug}#reserve`}>Reserve a Valuation</Link>}</div></article> }
+
+export function EventCard({ event }: { event: GoldTableEvent }) {
+  const status = getEventStatus(event);
+
+  return <article className="event-card">
+    <p className={`event-card__status event-card__status--${status}`}>{status === "upcoming" ? (event.walkInsWelcome ? "Walk-ins welcome" : "Appointment only") : "Event ended"}</p>
+    <h3>{event.venueName}</h3>
+    <p className="event-card__location">{event.town}, {event.postcode}</p>
+    <p><strong>{formatEventDate(event.startDateTime)}</strong><br />{formatEventTime(event.startDateTime)}–{formatEventTime(event.endDateTime)}</p>
+    <p>{event.shortDescription}</p>
+    <Link className="text-link" href={`/events/${event.slug}`}>{status === "upcoming" ? "Event details & times" : "View event"} <span aria-hidden="true">→</span></Link>
+  </article>;
+}

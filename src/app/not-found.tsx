@@ -1,2 +1,12 @@
 import Link from "next/link";
-export default function NotFound(){return <section className="section"><div className="container" style={{textAlign:"center",maxWidth:720}}><p className="serif" style={{fontSize:100,color:"var(--gold)",margin:0}}>404</p><h1 style={{fontSize:"clamp(2.5rem,6vw,4.5rem)"}}>That page is not on the table.</h1><p>It may have moved, or the address may be incorrect.</p><div style={{display:"flex",gap:14,justifyContent:"center",flexWrap:"wrap"}}><Link className="button navy" href="/events">Find an Event</Link><Link className="button secondary" href="/">Return home</Link></div></div></section>}
+
+export default function NotFound() {
+  return <section className="section status-page">
+    <div className="container status-page__content">
+      <p className="status-code" aria-hidden="true">404</p>
+      <h1>That page is not on the table.</h1>
+      <p className="status-page__intro">It may have moved, or the address may be incorrect.</p>
+      <div className="status-actions"><Link className="button button--ink" href="/events">Find a local event</Link><Link className="button secondary" href="/">Return home</Link></div>
+    </div>
+  </section>;
+}

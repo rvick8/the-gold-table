@@ -2,7 +2,7 @@ export async function forwardToHookdeck(payload: Record<string, unknown>) {
   const url = process.env.HOOKDECK_WEBHOOK_URL;
   if (!url) {
     if (process.env.NODE_ENV !== "production") {
-      console.info("[The Gold Table development form submission]", payload);
+      console.info("[The Gold Table development form submission]", { formType: payload.form_type, submissionId: payload.submissionId });
       return { development: true };
     }
     console.error("HOOKDECK_WEBHOOK_URL is missing in production");
