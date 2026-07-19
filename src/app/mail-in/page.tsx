@@ -4,6 +4,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { site } from "@/content/site";
 import Link from "next/link";
 import { createPageMetadata } from "@/lib/metadata";
+import { AssuranceRibbon } from "@/components/assurance-ribbon";
 
 export const metadata = createPageMetadata({
   title: "Mail-in gold valuation",
@@ -32,6 +33,7 @@ export default function MailIn() {
           </div>
         </div>
       </section>
+      <AssuranceRibbon audience="seller" />
     </>;
   }
 
@@ -48,6 +50,7 @@ export default function MailIn() {
         <Image src="/images/gold-table-mail-pack-v2.png" alt="A secure, unbranded valuation pack on a kitchen table" width={1448} height={1086} preload className="content-hero__image" />
       </div>
     </section>
+    <AssuranceRibbon audience="seller" />
     <section className="section section--paper">
       <div className="container">
         <h2>How it works</h2>

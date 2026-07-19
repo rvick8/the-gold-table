@@ -1,5 +1,6 @@
 import { EventSearch } from "@/components/event-search";
 import { GoldTableForm } from "@/components/forms";
+import { AssuranceRibbon } from "@/components/assurance-ribbon";
 import { getUpcomingEvents } from "@/lib/events";
 import { createPageMetadata } from "@/lib/metadata";
 
@@ -24,6 +25,7 @@ export default async function EventsPage({ searchParams }: { searchParams: Promi
         <p>Search upcoming dates by postcode, town or borough. Every listing shows when to come, where to go and whether walk-ins are welcome.</p>
       </div>
     </section>
+    <AssuranceRibbon audience="seller" />
     <section className="section events-index" aria-label="Upcoming events">
       <div className="container">
         <EventSearch events={upcoming} initialQuery={location} />

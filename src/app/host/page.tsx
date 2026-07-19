@@ -2,6 +2,7 @@ import Image from "next/image";
 import { GoldTableForm } from "@/components/forms";
 import { venuePlaceholderQuote } from "@/content/social-proof";
 import { createPageMetadata } from "@/lib/metadata";
+import { AssuranceRibbon } from "@/components/assurance-ribbon";
 
 export const metadata = createPageMetadata({
   title: "Host a local Gold Table event",
@@ -55,6 +56,8 @@ export default function HostPage() {
         </div>
       </div>
     </section>
+
+    <AssuranceRibbon audience="venue" />
 
     <section className="section venue-benefits" aria-labelledby="venue-benefits-heading">
       <div className="container venue-benefits__grid">

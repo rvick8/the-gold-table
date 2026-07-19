@@ -9,6 +9,7 @@ import { EventCard } from "@/components/event-card";
 import { GoldTableForm } from "@/components/forms";
 import { StructuredData } from "@/components/structured-data";
 import { FaqAccordion } from "@/components/faq-accordion";
+import { AssuranceRibbon } from "@/components/assurance-ribbon";
 import { faqs } from "@/content/faqs";
 import { site } from "@/content/site";
 import { createPageMetadata } from "@/lib/metadata";
@@ -91,6 +92,8 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
         </div>
       </div>
     </section>
+
+    {upcoming ? <AssuranceRibbon audience="seller" /> : null}
 
     <section className="section visit-section" aria-labelledby="visit-heading">
       <div className="container">

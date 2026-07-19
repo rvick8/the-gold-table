@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { EventFinder } from "@/components/event-finder";
 import { FaqAccordion } from "@/components/faq-accordion";
+import { AssuranceRibbon } from "@/components/assurance-ribbon";
 import { faqs } from "@/content/faqs";
 import { createPageMetadata } from "@/lib/metadata";
 
@@ -33,6 +34,8 @@ export default function HowItWorksPage() {
         <div className="inner-hero__media"><Image src="/images/gold-table-valuation-event-v2.png" alt="A Gold Table valuer explaining a ring to a customer at a local event" fill preload sizes="(max-width: 900px) 100vw, 48vw" /></div>
       </div>
     </section>
+
+    <AssuranceRibbon audience="seller" />
 
     <section className="section full-process" aria-labelledby="full-process-heading">
       <div className="container">
