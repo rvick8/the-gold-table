@@ -5,6 +5,7 @@ import { FaqAccordion } from "@/components/faq-accordion";
 import { StructuredData } from "@/components/structured-data";
 import { faqs } from "@/content/faqs";
 import { site } from "@/content/site";
+import { guestPlaceholderQuotes } from "@/content/social-proof";
 import {
   formatEventDate,
   formatEventTime,
@@ -26,6 +27,12 @@ const processSteps = [
   ["02", "We test and explain", "Your valuer examines each piece and talks you through what they find."],
   ["03", "Hear a clear offer", "Where we can buy an item, we explain the offer before you decide."],
   ["04", "You stay in control", "Sell, ask more questions or take everything home. The choice is yours."],
+] as const;
+
+const homeTrustFacts = [
+  ["See it assessed", "Your valuer examines each item in front of you and explains what they find."],
+  ["Understand the offer", "You can ask questions and hear what is shaping the offer before deciding."],
+  ["Keep control", "The valuation is free, and you are under no obligation to sell anything."],
 ] as const;
 
 const weekdayFormatter = new Intl.DateTimeFormat("en-GB", { weekday: "short", timeZone: "Europe/London" });
@@ -63,6 +70,21 @@ export default function Home() {
           />
           <div className="home-hero__caption"><strong>A clear valuation, face to face.</strong><span>Most appointments take 15 minutes.</span></div>
         </div>
+      </div>
+    </section>
+
+    <section className="home-trust-rail" aria-labelledby="home-trust-heading">
+      <div className="container home-trust-rail__grid">
+        <div className="home-trust-rail__intro">
+          <p className="eyebrow eyebrow--light">The Gold Table promise</p>
+          <h2 id="home-trust-heading">A clear process from the first hello.</h2>
+        </div>
+        <ol className="home-trust-rail__facts">
+          {homeTrustFacts.map(([heading, copy], index) => <li key={heading}>
+            <span aria-hidden="true">0{index + 1}</span>
+            <div><strong>{heading}</strong><p>{copy}</p></div>
+          </li>)}
+        </ol>
       </div>
     </section>
 
@@ -150,6 +172,29 @@ export default function Home() {
           <article><span>01</span><div><h3>Clear explanations</h3><p>We talk you through how an item is assessed and what shapes the offer.</p></div></article>
           <article><span>02</span><div><h3>Local and face to face</h3><p>Attend a published event at a familiar pub, hotel, club or community venue.</p></div></article>
           <article><span>03</span><div><h3>No-pressure decisions</h3><p>There is no fee for the valuation and no obligation to accept an offer.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section className="section guest-proof" aria-labelledby="guest-proof-heading">
+      <div className="container">
+        <div className="guest-proof__heading">
+          <div>
+            <p className="eyebrow">A little more reassurance</p>
+            <h2 id="guest-proof-heading">The kind of experience people want before they arrive.</h2>
+          </div>
+          <p>Clear information, a private conversation and time to decide are built into the visit—not extras to ask for.</p>
+        </div>
+        <aside className="proof-placeholder-note" aria-label="Placeholder review notice">
+          <strong>Preview social proof</strong>
+          <span>These illustrative quotes are temporary filler and will be replaced with consented customer reviews before launch.</span>
+        </aside>
+        <div className="guest-proof__grid">
+          {guestPlaceholderQuotes.map(({ quote, context }, index) => <figure className="guest-proof__card" key={context}>
+            <span className="guest-proof__number" aria-hidden="true">0{index + 1}</span>
+            <blockquote>“{quote}”</blockquote>
+            <figcaption>{context}</figcaption>
+          </figure>)}
         </div>
       </div>
     </section>

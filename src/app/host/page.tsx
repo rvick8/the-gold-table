@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { GoldTableForm } from "@/components/forms";
+import { venuePlaceholderQuote } from "@/content/social-proof";
 import { createPageMetadata } from "@/lib/metadata";
 
 export const metadata = createPageMetadata({
@@ -73,6 +74,27 @@ export default function HostPage() {
       <div className="container">
         <div className="section-heading"><p className="eyebrow eyebrow--light">A clear division of responsibility</p><h2 id="responsibility-heading">You know exactly who is doing what.</h2></div>
         <div className="responsibility-grid">{responsibilities.map(([heading, items]) => <article key={heading}><h3>{heading}</h3><ul>{items.map((item) => <li key={item}>{item}</li>)}</ul></article>)}</div>
+      </div>
+    </section>
+
+    <section className="section venue-proof" aria-labelledby="venue-proof-heading">
+      <div className="container venue-proof__grid">
+        <div>
+          <p className="eyebrow">What venue teams need to know</p>
+          <h2 id="venue-proof-heading">Useful for your community. Straightforward for your team.</h2>
+          <p>The first conversation is designed to make the practical side clear: space, timing, access and one point of contact. You can assess the fit before committing to anything.</p>
+          <ul className="venue-proof__facts">
+            <li><strong>Clear planning</strong><span>Agree the event shape before a date is set.</span></li>
+            <li><strong>Managed delivery</strong><span>The Gold Table team runs the valuation activity.</span></li>
+            <li><strong>Local relevance</strong><span>Offer your regulars and neighbours a practical service.</span></li>
+          </ul>
+        </div>
+        <figure className="venue-proof__quote">
+          <p className="venue-proof__label">Preview venue feedback</p>
+          <blockquote>“{venuePlaceholderQuote.quote}”</blockquote>
+          <figcaption>{venuePlaceholderQuote.context}</figcaption>
+          <p className="venue-proof__disclaimer">Illustrative placeholder only. Replace with a consented venue review before launch.</p>
+        </figure>
       </div>
     </section>
 

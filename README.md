@@ -60,7 +60,7 @@ Push the repository to a Git provider, import it into Vercel, set the required e
 - [ ] Confirm AML and identification requirements
 - [ ] Confirm payment timing and wording
 - [ ] Confirm mail-in insurance, postage and return-shipping terms before enabling the service
-- [ ] Add genuine, consented reviews and venue proof when available
+- [ ] Replace illustrative filler quotes with genuine, consented reviews and venue proof
 - [ ] Add capacity-aware appointment storage, confirmation, cancellation and rescheduling
 - [ ] Add coordinate-based distance search or geocoding for true nearest-event results
 - [ ] Test every form, error state and duplicate-submit state
