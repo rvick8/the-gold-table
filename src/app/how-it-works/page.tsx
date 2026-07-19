@@ -1,23 +1,79 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { Breadcrumbs } from "@/components/breadcrumbs";
-import { Cta } from "@/components/cta";
+import { EventFinder } from "@/components/event-finder";
+import { FaqAccordion } from "@/components/faq-accordion";
+import { faqs } from "@/content/faqs";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = { title: "How gold valuation works", description: "Learn what to bring, how items are tested and valued, and what happens if you choose to sell.", alternates: { canonical: "/how-it-works" } };
+export const metadata = createPageMetadata({
+  title: "How our gold valuations and offers work",
+  description: "Learn what to bring to a Gold Table event, how items are tested, how offers are explained and what happens if you choose to sell.",
+  canonical: "/how-it-works",
+});
 
-export default function HowItWorks() {
-  const steps = [
-    ["Bring your items", "Jewellery, coins, watches, silver and inherited collections are welcome."],
-    ["We examine them", "The valuer checks, weighs and tests each item carefully."],
-    ["We explain the value", "You receive a clear explanation and can ask questions."],
-    ["You decide", "If an offer is made, accepting it is entirely your choice."],
-  ];
+const steps = [
+  ["Bring what you have", "Gold jewellery, broken pieces, coins, bullion, watches, silver and inherited collections are welcome. You do not need to sort or identify items first."],
+  ["We examine each item", "Your valuer looks for hallmarks, weighs the item and uses appropriate testing methods where needed."],
+  ["We explain the valuation", "You hear what we found, what affects the value and which items we may be able to buy."],
+  ["You decide", "If an offer is made, you can accept it, ask questions or take the item home. There is no valuation fee and no obligation to sell."],
+] as const;
+
+const items = ["Gold rings and jewellery", "Broken or tangled gold", "Sovereigns and gold coins", "Bullion and bars", "Gold and vintage watches", "Silver jewellery and silverware", "Medals and collectables", "Inherited collections"];
+
+export default function HowItWorksPage() {
   return <>
-    <Breadcrumbs items={[{ label: "How It Works" }]} />
-    <section className="section content-hero"><div className="container split-grid"><div><p className="section-kicker">Simple and private</p><h1>Tested, weighed, explained.</h1><p className="content-hero__intro">We examine what you bring, explain the valuation clearly and let you decide what happens next.</p><Link className="button navy" href="/events">Find an Event</Link></div><Image src="/images/gold-table-valuation-hero-branded.png" alt="A Gold Table valuer examining a ring with a customer" width={850} height={650} loading="eager" className="content-hero__image" /></div></section>
-    <section className="section" style={{ background: "white" }}><div className="container" style={{ maxWidth: 920 }}>{steps.map(([heading, copy], index) => <article key={heading} style={{ display: "grid", gridTemplateColumns: "100px 1fr", gap: 32, padding: "2.2rem 0", borderTop: "1px solid var(--border)" }}><span className="serif" style={{ fontSize: 42, color: "var(--gold)" }}>0{index + 1}</span><div><h3 style={{ margin: 0 }}>{heading}</h3><p>{copy}</p></div></article>)}</div></section>
-    <section className="section"><div className="container split-grid"><div><h2>Private and discreet</h2><p>Items are handled carefully and conversations are kept as private as the venue allows.</p></div><div><h2>Identification and compliance</h2><p className="placeholder-note">Exact UK seller-identification, AML, record-keeping and payment requirements need legal review before launch.</p></div></div></section>
-    <Cta />
+    <section className="inner-hero inner-hero--split" aria-labelledby="how-heading">
+      <div className="container inner-hero__grid">
+        <div>
+          <p className="eyebrow eyebrow--light">How The Gold Table works</p>
+          <h1 id="how-heading">Tested carefully. Explained clearly. <em>Always your decision.</em></h1>
+          <p>Our events give you a straightforward, face-to-face way to understand what you own and hear an offer if we can buy it.</p>
+          <Link className="button button--gold" href="/events">Find an event <span aria-hidden="true">→</span></Link>
+        </div>
+        <div className="inner-hero__media"><Image src="/images/gold-table-valuation-hero-branded.png" alt="A Gold Table valuer examining a ring with a customer" fill preload sizes="(max-width: 900px) 100vw, 48vw" /></div>
+      </div>
+    </section>
+
+    <section className="section full-process" aria-labelledby="full-process-heading">
+      <div className="container">
+        <div className="section-heading section-heading--split"><div><p className="eyebrow">At the table</p><h2 id="full-process-heading">Four simple steps.</h2></div><p>A typical appointment is 15 minutes. Larger collections may need more time.</p></div>
+        <ol className="full-process__list">{steps.map(([heading, copy], index) => <li key={heading}><span>0{index + 1}</span><div><h3>{heading}</h3><p>{copy}</p></div></li>)}</ol>
+      </div>
+    </section>
+
+    <section id="what-we-buy" className="section what-we-buy" aria-labelledby="what-we-buy-heading">
+      <div className="container what-we-buy__grid">
+        <div>
+          <p className="eyebrow eyebrow--light">What we value and buy</p>
+          <h2 id="what-we-buy-heading">If you are unsure, bring it.</h2>
+          <p>You do not need to know whether something is real gold before attending. We can take a careful look and explain what we find.</p>
+        </div>
+        <ul>{items.map((item, index) => <li key={item}><span>{String(index + 1).padStart(2, "0")}</span>{item}</li>)}</ul>
+      </div>
+    </section>
+
+    <section className="section offer-section" aria-labelledby="offer-heading">
+      <div className="container offer-section__grid">
+        <div className="offer-section__media"><Image src="/images/jewellery-drawer.jpg" alt="Jewellery discovered in a wooden drawer" fill sizes="(max-width: 900px) 100vw, 45vw" /></div>
+        <div>
+          <p className="eyebrow">Understanding an offer</p>
+          <h2 id="offer-heading">Value depends on more than one number.</h2>
+          <p>An offer may consider the precious-metal content and weight, the item’s condition, possible resale value and the relevant market at the time.</p>
+          <p>We explain the basis of any offer we make before you decide. An event valuation is a buying assessment, not an insurance or formal probate valuation.</p>
+          <div className="offer-note"><strong>If you choose not to sell</strong><p>You simply take your items home. There is no charge for the event valuation.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section className="section practical-section" aria-labelledby="practical-heading">
+      <div className="container practical-section__grid">
+        <div><p className="eyebrow">Before attending</p><h2 id="practical-heading">Check the individual event page.</h2><p>Each event page gives the date, opening hours, full address, walk-in status, parking, public-transport and accessibility information available for that venue.</p></div>
+        <div className="practical-cards"><article><h3>Identification</h3><p>If you may decide to sell, your event confirmation will explain any identification or payment information you need to bring.</p></article><article><h3>Larger collections</h3><p>Use the optional note when requesting a time so the team can plan for items that may take longer than a standard appointment.</p></article></div>
+      </div>
+    </section>
+
+    <section className="section home-faq" aria-labelledby="how-faq-heading"><div className="container home-faq__grid"><div><p className="eyebrow">Questions answered</p><h2 id="how-faq-heading">Know before you go.</h2><p>Clear answers about testing, offers, appointments and choosing not to sell.</p><Link className="text-link" href="/faqs">Read every FAQ <span aria-hidden="true">→</span></Link></div><FaqAccordion items={faqs.slice(0, 8)} /></div></section>
+
+    <section className="section final-finder" aria-labelledby="how-finder-heading"><div className="container final-finder__grid"><div><p className="eyebrow eyebrow--light">Find your Gold Table</p><h2 id="how-finder-heading">See what is happening near you.</h2></div><EventFinder compact /></div></section>
   </>;
 }

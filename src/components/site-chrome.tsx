@@ -1,16 +1,13 @@
-"use client";
-
 import Link from "next/link";
-import { useState } from "react";
 import { site } from "@/content/site";
 import { Logo } from "./logo";
+import { MobileNavigation } from "./mobile-navigation";
 
 const links = [
-  ["Find an Event", "/events"],
-  ["How It Works", "/how-it-works"],
-  ...(site.mailIn.enabled ? [["Mail-In Valuation", "/mail-in"]] : []),
-  ["Host The Gold Table", "/host"],
+  ["How it works", "/how-it-works"],
+  ["What we buy", "/how-it-works#what-we-buy"],
   ["FAQs", "/faqs"],
+  ["For venues", "/host"],
 ] as const;
 
 const isConfigured = (value: string) => Boolean(value && !value.startsWith("["));
@@ -19,40 +16,71 @@ const companyConfigured = [site.legal.companyName, site.legal.companyNumber, sit
 const showDevelopmentWarnings = process.env.NODE_ENV !== "production";
 
 export function Header() {
-  const [open, setOpen] = useState(false);
-
   return <>
-    <div className="announcement" hidden={!site.announcement.enabled}>{site.announcement.text}</div>
+    <div className="trust-bar">
+      <div className="container trust-bar__inner">
+        <span>Local gold-buying events across London</span>
+        <span className="trust-bar__facts" aria-label="Service benefits">
+          <span>Free valuation</span><span>No obligation</span><span>Private and discreet</span>
+        </span>
+      </div>
+    </div>
     <header className="site-header">
       <div className="container site-header__inner">
         <Logo inverse />
-        <nav className="desktop-nav site-header__nav" aria-label="Main navigation">
-          {links.map(([label, href]) => <Link className="nav-link" href={href} key={href}>{label}</Link>)}
-          <Link className="button" href="/events">Find an Event</Link>
+        <nav className="desktop-nav" aria-label="Main navigation">
+          {links.map(([label, href]) => <Link href={href} key={href}>{label}</Link>)}
+          <Link className="button button--gold header-cta" href="/events">Find an event</Link>
         </nav>
-        <button aria-expanded={open} aria-controls="mobile-navigation" aria-label="Toggle navigation" onClick={() => setOpen(!open)} className="mobile-menu-button">{open ? "Close" : "Menu"}</button>
+        <MobileNavigation links={links} />
       </div>
-      {open && <nav id="mobile-navigation" aria-label="Mobile navigation" className="container mobile-navigation">
-        {links.map(([label, href]) => <Link className="nav-link" href={href} key={href} onClick={() => setOpen(false)}>{label}</Link>)}
-        <Link className="button" href="/events" onClick={() => setOpen(false)}>Find an Event</Link>
-      </nav>}
     </header>
   </>;
 }
 
 export function Footer() {
-  return <footer className="site-footer"><div className="container">
-    <div className="site-footer__grid">
-      <div><Logo inverse /><p>Friendly experts. Honest valuations. Trusted local venues.</p></div>
-      <div><strong>Explore</strong><div className="site-footer__links">{links.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}</div></div>
-      <div><strong>Legal</strong><div className="site-footer__links"><Link href="/privacy">Privacy policy</Link><Link href="/terms">Terms</Link></div></div>
-      {contactConfigured && <div><strong>Contact</strong><p>{isConfigured(site.legal.email) && <>{site.legal.email}<br /></>}{isConfigured(site.legal.phone) && site.legal.phone}</p></div>}
-      {!contactConfigured && showDevelopmentWarnings && <div className="footer-config-warning"><strong>Development only</strong><p>Add the contact email and phone before launch.</p></div>}
+  return <footer className="site-footer">
+    <div className="container">
+      <div className="site-footer__lead">
+        <Logo inverse />
+        <p>The local, no-pressure way to understand and sell gold.</p>
+      </div>
+      <div className="site-footer__grid">
+        <div>
+          <strong>For sellers</strong>
+          <div className="site-footer__links">
+            <Link href="/events">Find an event</Link>
+            <Link href="/how-it-works">How it works</Link>
+            <Link href="/how-it-works#what-we-buy">What we buy</Link>
+            <Link href="/faqs">FAQs</Link>
+          </div>
+        </div>
+        <div>
+          <strong>For venues</strong>
+          <div className="site-footer__links">
+            <Link href="/host">Host The Gold Table</Link>
+            <Link href="/host#venue-fit">Is your venue a fit?</Link>
+            <Link href="/host#venue-enquiry">Make an enquiry</Link>
+          </div>
+        </div>
+        <div>
+          <strong>Legal</strong>
+          <div className="site-footer__links">
+            <Link href="/privacy">Privacy policy</Link>
+            <Link href="/terms">Terms</Link>
+          </div>
+        </div>
+        {contactConfigured ? <div>
+          <strong>Contact</strong>
+          <p>{isConfigured(site.legal.email) ? <><a href={`mailto:${site.legal.email}`}>{site.legal.email}</a><br /></> : null}{isConfigured(site.legal.phone) ? <a href={`tel:${site.legal.phone}`}>{site.legal.phone}</a> : null}</p>
+        </div> : showDevelopmentWarnings ? <div className="footer-config-warning"><strong>Development only</strong><p>Add the contact email and phone before launch.</p></div> : null}
+      </div>
+      <div className="site-footer__bottom">
+        {companyConfigured
+          ? <p>{site.legal.companyName} · {site.legal.companyNumber} · {site.legal.registeredOffice}</p>
+          : showDevelopmentWarnings ? <p className="footer-config-warning">Development only: company legal details are hidden in production until configured.</p> : <span />}
+        <p>© {new Date().getFullYear()} The Gold Table</p>
+      </div>
     </div>
-    {(companyConfigured || showDevelopmentWarnings) && <><div className="rule site-footer__rule" />
-      {companyConfigured
-        ? <p className="site-footer__legal">{site.legal.companyName} · {site.legal.companyNumber} · {site.legal.registeredOffice}</p>
-        : <p className="site-footer__legal footer-config-warning">Development only: company legal details are hidden in production until configured.</p>}
-    </>}
-  </div></footer>;
+  </footer>;
 }
