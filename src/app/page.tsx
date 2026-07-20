@@ -48,7 +48,7 @@ export default function Home() {
       <div className="container home-hero__grid">
         <div className="home-hero__copy">
           <p className="eyebrow eyebrow--light">Local gold-buying events</p>
-          <h1 id="home-hero-heading">Find an event. <em>Bring your gold.</em></h1>
+          <h1 id="home-hero-heading" className="home-hero__heading"><span>Find an event.</span><em>Bring your gold.</em></h1>
           <p className="home-hero__intro">Bring jewellery, coins, watches or silver. We assess each item at the table, explain any offer and you decide.</p>
           <EventFinder />
           <ul className="reassurance-list" aria-label="Valuation reassurance">
@@ -84,16 +84,16 @@ export default function Home() {
           {upcoming.map((event) => {
             const date = new Date(event.startDateTime);
             return <article className="home-event-card" key={event.id}>
-              <div className="home-event-card__date" aria-label={formatEventDate(event.startDateTime)}>
+              <time className="home-event-card__date" dateTime={event.startDateTime} aria-label={formatEventDate(event.startDateTime)}>
                 <span>{weekdayFormatter.format(date)}</span>
                 <strong>{dayFormatter.format(date)}</strong>
                 <span>{monthFormatter.format(date)}</span>
-              </div>
+              </time>
               <div className="home-event-card__body">
                 <div className="event-status"><span aria-hidden="true" />{event.walkInsWelcome ? "Walk-ins welcome" : "Appointment only"}</div>
                 <h3>{event.venueName}</h3>
-                <p>{event.town}, {event.borough}<br /><strong>{formatEventTime(event.startDateTime)}–{formatEventTime(event.endDateTime)}</strong></p>
-                <Link href={`/events/${event.slug}`}>See event &amp; request a time <span aria-hidden="true">→</span></Link>
+                <p>{event.town}, {event.borough}<br /><strong>{event.postcode} · {formatEventTime(event.startDateTime)}–{formatEventTime(event.endDateTime)}</strong></p>
+                <Link href={`/events/${event.slug}`}>View event details <span aria-hidden="true">→</span></Link>
               </div>
             </article>;
           })}

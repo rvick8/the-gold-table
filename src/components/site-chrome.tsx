@@ -30,7 +30,10 @@ export function Header() {
           {links.map(([label, href]) => <Link href={href} key={href}>{label}</Link>)}
           <Link className="button button--gold header-cta" href="/events">Find an event</Link>
         </nav>
-        <MobileNavigation links={links} />
+        <div className="mobile-actions">
+          <Link className="mobile-event-cta" href="/events" aria-label="Find an event">Events</Link>
+          <MobileNavigation links={links} />
+        </div>
       </div>
     </header>
   </>;

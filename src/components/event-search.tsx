@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import Link from "next/link";
 import type { GoldTableEvent } from "@/content/events";
 import { formatEventDate, formatEventTime } from "@/lib/events";
@@ -33,6 +33,7 @@ const monthFormatter = new Intl.DateTimeFormat("en-GB", { month: "short", timeZo
 export function EventSearch({ events, initialQuery = "" }: { events: GoldTableEvent[]; initialQuery?: string }) {
   const [query, setQuery] = useState(initialQuery);
   const [draft, setDraft] = useState(initialQuery);
+  const searchInputRef = useRef<HTMLInputElement>(null);
   const filtered = events.filter((event) => eventMatches(event, query));
 
   function applySearch(submission: FormEvent<HTMLFormElement>) {
@@ -47,13 +48,14 @@ export function EventSearch({ events, initialQuery = "" }: { events: GoldTableEv
     setDraft("");
     setQuery("");
     window.history.replaceState(null, "", "/events");
+    requestAnimationFrame(() => searchInputRef.current?.focus());
   }
 
   return <div className="event-search">
     <form className="event-search__form" onSubmit={applySearch} role="search">
       <label htmlFor="event-search">Postcode, town or borough</label>
       <div className="event-search__row">
-        <input id="event-search" type="search" value={draft} onChange={(event) => setDraft(event.target.value)} placeholder="e.g. TW9 or Richmond" autoComplete="postal-code" />
+        <input id="event-search" ref={searchInputRef} type="search" value={draft} onChange={(event) => setDraft(event.target.value)} placeholder="e.g. TW9 or Richmond" autoComplete="postal-code" />
         <button className="button button--gold" type="submit">Find events</button>
       </div>
       <p>Enter a postcode or place name.</p>
@@ -67,11 +69,11 @@ export function EventSearch({ events, initialQuery = "" }: { events: GoldTableEv
     {filtered.length ? <div className="event-results">{filtered.map((event) => {
       const date = new Date(event.startDateTime);
       return <article className="event-result" key={event.id}>
-        <div className="event-result__date" aria-label={formatEventDate(event.startDateTime)}>
+        <time className="event-result__date" dateTime={event.startDateTime} aria-label={formatEventDate(event.startDateTime)}>
           <span>{weekdayFormatter.format(date)}</span>
           <strong>{dayFormatter.format(date)}</strong>
           <span>{monthFormatter.format(date)}</span>
-        </div>
+        </time>
         <div className="event-result__main">
           <h2>{event.venueName}</h2>
           <p>{event.addressLine1}, {event.town}, <strong>{event.postcode}</strong></p>
@@ -80,7 +82,7 @@ export function EventSearch({ events, initialQuery = "" }: { events: GoldTableEv
           <p><strong>{formatEventTime(event.startDateTime)}–{formatEventTime(event.endDateTime)}</strong></p>
           <p className="event-status"><span aria-hidden="true" />{event.walkInsWelcome ? "Walk-ins welcome" : "Appointment only"}</p>
         </div>
-        <Link className="button button--ink" href={`/events/${event.slug}`}>See event &amp; request a time <span aria-hidden="true">→</span></Link>
+        <Link className="button button--ink" href={`/events/${event.slug}`}>View event details <span aria-hidden="true">→</span></Link>
       </article>;
     })}</div> : <div className="event-empty">
       <p className="eyebrow">No exact match yet</p>

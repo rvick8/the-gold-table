@@ -22,7 +22,7 @@ type FieldProps = {
 };
 
 const labels: Record<Kind, string> = {
-  event_reservation: "Send appointment request",
+  event_reservation: "Send request",
   event_interest: "Record my area",
   mail_in_pack_request: "Request a valuation pack",
   host_enquiry: "Check my venue",
@@ -186,10 +186,13 @@ export function GoldTableForm({ kind, event }: { kind: Kind; event?: GoldTableEv
       <Field name="phone" label="Phone number" type="tel" placeholder="e.g. 020 7946 0123" autoComplete="tel" describedBy={contactHintId} error={errorFor("phone")} />
     </div>
 
-    {kind === "host_enquiry" ? <>
-      <SelectField name="venueType" label="Venue type (optional)" options={["Pub or bar", "Hotel", "Golf or sports club", "Community venue", "Other"]} error={errorFor("venueType")} />
-      <Field name="message" label="Anything useful to know? (optional)" textarea placeholder="Tell us about the space or the best time to contact you." error={errorFor("message")} />
-    </> : null}
+    {kind === "host_enquiry" ? <details className="form-more form-more--optional">
+      <summary>Add venue details (optional)</summary>
+      <div className="form-more__content">
+        <SelectField name="venueType" label="Venue type" options={["Pub or bar", "Hotel", "Golf or sports club", "Community venue", "Other"]} error={errorFor("venueType")} />
+        <Field name="message" label="Anything useful to know?" textarea placeholder="Tell us about the space or the best time to contact you." error={errorFor("message")} />
+      </div>
+    </details> : null}
 
     {kind === "event_reservation" ? <details className="form-more"><summary>Add a note (optional)</summary><Field name="message" label="Message" textarea placeholder="Accessibility needs, a larger collection or anything else the team should know." error={errorFor("message")} /></details> : null}
     {kind === "event_interest" ? <Field name="message" label="Nearby town or area (optional)" placeholder="e.g. Richmond" error={errorFor("message")} /> : null}
