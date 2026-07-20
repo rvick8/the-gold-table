@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { GoldTableForm } from "@/components/forms";
 import { createPageMetadata } from "@/lib/metadata";
+import { VisualMarker } from "@/components/visual-marker";
 
 export const metadata = createPageMetadata({
   title: "Host a local Gold Table event",
@@ -37,6 +38,7 @@ export default function HostPage() {
       <div className="container host-hero__grid">
         <div className="host-hero__copy">
           <p className="eyebrow eyebrow--light">For local venues</p>
+          <VisualMarker name="venue" label="Local venue" />
           <h1 id="host-heading">Host an event. <em>We run the day.</em></h1>
           <p className="host-hero__intro">We bring the team, promotion and appointments. You provide a welcoming private space.</p>
           <div className="host-snapshot">
@@ -78,6 +80,7 @@ export default function HostPage() {
       <div className="container venue-fit__grid">
         <div>
           <p className="eyebrow">Is your venue a fit?</p>
+          <VisualMarker name="venue" label="Venue checklist" />
           <h2 id="venue-fit-heading">Could your space work?</h2>
           <p>Check the basics first. We can work through layout and timing after that.</p>
           <a className="button button--ink" href="#venue-enquiry">Check my venue <span aria-hidden="true">↑</span></a>

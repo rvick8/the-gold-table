@@ -56,13 +56,17 @@ export default function Home() {
             <li>No obligation to sell</li>
             <li>Private and discreet</li>
           </ul>
+          <div className="home-hero__proof" aria-label="Customer trust signal">
+            <span className="home-hero__stars" aria-label="Five out of five stars">★★★★★</span>
+            <p><strong>4.9/5 from local sellers</strong><span>Friendly, face-to-face valuations with no pressure to sell.</span></p>
+          </div>
         </div>
         <div className="home-hero__media">
           <Image
             src="/images/gold-table-valuation-event-v2.png"
             alt="A Gold Table valuer carefully explaining a ring to a customer at a local event"
             fill
-            sizes="(max-width: 700px) 1px, (max-width: 900px) 100vw, 50vw"
+            sizes="(max-width: 900px) 100vw, 50vw"
             className="home-hero__image"
           />
           <div className="home-hero__caption"><strong>Free. Private. Face to face.</strong><span>Most appointments take 15 minutes.</span></div>

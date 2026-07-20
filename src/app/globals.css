@@ -185,11 +185,15 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .home-hero { position: relative; overflow: hidden; background: var(--ink); color: var(--cream); }
 .home-hero::before { position: absolute; inset: 0; background: radial-gradient(circle at 20% 0%, rgba(209,166,78,0.13), transparent 34%), linear-gradient(120deg, transparent 48%, rgba(255,255,255,0.025) 48.2%, transparent 48.4%); content: ""; pointer-events: none; }
 .home-hero__grid { position: relative; display: grid; min-height: 690px; grid-template-columns: minmax(0, 0.96fr) minmax(420px, 1.04fr); align-items: stretch; }
-.home-hero__copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(4rem, 6.4vw, 6.5rem) clamp(2rem, 5vw, 5.5rem) clamp(4rem, 6vw, 6rem) 0; }
+.home-hero__copy { display: flex; flex-direction: column; justify-content: flex-start; padding: clamp(3rem, 4vw, 3.75rem) clamp(2rem, 5vw, 5.5rem) clamp(3rem, 4vw, 3.75rem) 0; }
 .home-hero h1 { max-width: 10.5ch; margin: 0; color: var(--cream); font-size: clamp(3.35rem, 5.4vw, 5.75rem); }
 .home-hero .home-hero__heading { max-width: none; }
 .home-hero__heading > span, .home-hero__heading > em { display: block; }
 .home-hero h1 em, .host-hero h1 em, .inner-hero h1 em { color: #dfc27e; font-style: italic; font-weight: 430; }
+.visual-marker { display: grid; width: 44px; height: 44px; place-items: center; margin: 1rem 0 1.15rem; border: 1px solid rgba(209,166,78,0.54); border-radius: 50%; background: rgba(209,166,78,0.1); color: #dfc27e; box-shadow: inset 0 0 0 5px rgba(209,166,78,0.035); }
+.visual-marker svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.45; }
+.section:not(.responsibility-section) .visual-marker { margin-top: 0.8rem; }
+.what-we-buy .visual-marker, .faq-hero .visual-marker { background: rgba(255,255,255,0.08); }
 .home-hero__intro { max-width: 55ch; margin: 1.5rem 0 0; color: #c5cfd7; font-size: 1.05rem; line-height: 1.65; }
 .home-hero__media { position: relative; min-height: 690px; margin-right: calc((100vw - min(1240px, calc(100vw - 3rem))) / -2); overflow: hidden; }
 .home-hero__media::after, .inner-hero__media::after { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(7,24,39,0.18), transparent 25%); content: ""; pointer-events: none; }
@@ -197,10 +201,14 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .home-hero__caption { position: absolute; z-index: 2; right: 0; bottom: 0; display: grid; min-width: 330px; gap: 0.12rem; padding: 1.1rem 1.4rem; background: var(--sand); color: var(--ink); }
 .home-hero__caption strong { font-family: var(--font-display), Georgia, serif; font-size: 1.15rem; }
 .home-hero__caption span { color: var(--slate); font-size: 0.72rem; }
-.reassurance-list { display: flex; flex-wrap: wrap; gap: 0.65rem 1.35rem; margin: 1.05rem 0 0; padding: 0; color: #c5cfd7; font-size: 0.72rem; font-weight: 720; list-style: none; }
+.reassurance-list { display: flex; flex-wrap: wrap; gap: 0.65rem 1.35rem; margin: 0.85rem 0 0; padding: 0; color: #c5cfd7; font-size: 0.72rem; font-weight: 720; list-style: none; }
 .reassurance-list li { display: inline-flex; align-items: center; gap: 0.5rem; }
 .reassurance-list li::before { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); content: ""; }
 .reassurance-list--ink { color: var(--slate); }
+.home-hero__proof { display: flex; gap: 0.75rem; align-items: center; max-width: 540px; margin-top: 0.75rem; padding: 0.65rem 0 0; border-top: 1px solid rgba(255,255,255,0.16); }
+.home-hero__stars { flex: 0 0 auto; color: var(--gold); font-size: 0.86rem; letter-spacing: 0.08em; }
+.home-hero__proof p { display: grid; gap: 0.12rem; margin: 0; color: #c5cfd7; font-size: 0.72rem; line-height: 1.35; }
+.home-hero__proof strong { color: var(--cream); font-size: 0.75rem; }
 .home-trust-rail { position: relative; z-index: 2; background: var(--ink-soft); color: var(--cream); }
 .home-trust-rail__grid { display: grid; grid-template-columns: minmax(250px, 0.58fr) minmax(0, 1.42fr); gap: clamp(2rem, 6vw, 6rem); align-items: center; padding-block: clamp(2.25rem, 4vw, 3.2rem); }
 .home-trust-rail__intro h2 { max-width: 13ch; margin: 0; color: var(--cream); font-size: clamp(1.8rem, 2.9vw, 2.65rem); }
@@ -536,6 +544,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .home-hero__copy, .inner-hero__grid > div:first-child { padding: 4.25rem 0; }
   .home-hero h1, .inner-hero h1 { max-width: 13ch; }
   .home-hero__media, .inner-hero__media { min-height: 460px; margin: 0 calc((100vw - min(760px, calc(100vw - 2.25rem))) / -2); }
+  .home-hero__image { object-position: 82% 42%; }
   .home-event-grid { grid-template-columns: 1fr; }
   .home-event-card { min-height: 0; grid-template-columns: 86px 1fr; padding: 1.5rem 0; border-left: 0; border-bottom: 1px solid var(--line); }
   .home-event-card__body a { margin-top: 1rem; }
@@ -588,7 +597,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .home-hero h1 { max-width: 12ch; font-size: clamp(3rem, 14.7vw, 4.25rem); }
   .home-hero__heading > em { white-space: nowrap; font-size: clamp(2.6rem, 12vw, 3.25rem); }
   .home-hero__intro { margin-top: 1rem; font-size: 0.93rem; }
-  .home-hero__media { display: none; }
+  .home-hero__media { display: block; min-height: 330px; margin-inline: -1rem; }
+  .home-hero__image { object-position: 84% 42%; }
+  .home-hero__caption { left: 0; min-width: 0; padding: 0.85rem 1rem; }
   .home-trust-rail__grid { padding-block: 2.6rem; }
   .home-trust-rail__facts { grid-template-columns: 1fr; border: 0; }
   .home-trust-rail__facts li, .home-trust-rail__facts > li:last-child { min-height: 0; padding: 1rem 0; border-right: 0; border-top: 1px solid rgba(255,255,255,0.16); }
@@ -599,6 +610,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .event-finder .button { width: 100%; }
   .reassurance-list { gap: 0.45rem 1rem; }
   .home-hero .reassurance-list { gap: 0.5rem 0.8rem; font-size: 0.72rem; }
+  .home-hero__proof { gap: 0.6rem; margin-top: 0.9rem; padding-top: 0.7rem; }
+  .home-hero__stars { font-size: 0.76rem; }
+  .home-hero__proof p { font-size: 0.68rem; }
+  .home-hero__proof strong { font-size: 0.72rem; }
   .upcoming-section { padding-top: 3.5rem; }
   .home-event-card { grid-template-columns: 68px 1fr; gap: 0.8rem; }
   .home-event-card__date strong { font-size: 2.75rem; }

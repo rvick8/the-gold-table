@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { createPageMetadata } from "@/lib/metadata";
+import { VisualMarker } from "@/components/visual-marker";
 
 export const metadata = createPageMetadata({
   title: "How our gold valuations and offers work",
@@ -22,6 +23,7 @@ export default function HowItWorksPage() {
       <div className="container inner-hero__grid">
         <div>
           <p className="eyebrow eyebrow--light">How it works</p>
+          <VisualMarker name="assessment" label="Gold assessment" />
           <h1 id="how-heading">Bring it in. <em>We explain it.</em></h1>
           <p>A free, face-to-face way to understand your gold and hear an offer where we can buy it.</p>
           <Link className="button button--gold" href="/events">Find an event <span aria-hidden="true">→</span></Link>
@@ -32,7 +34,7 @@ export default function HowItWorksPage() {
 
     <section className="section full-process" aria-labelledby="full-process-heading">
       <div className="container">
-        <div className="section-heading section-heading--split"><div><p className="eyebrow">At the table</p><h2 id="full-process-heading">Three simple steps.</h2></div><p>Most appointments take 15 minutes. Larger collections can take longer.</p></div>
+        <div className="section-heading section-heading--split"><div><p className="eyebrow">At the table</p><VisualMarker name="conversation" label="A clear conversation" /><h2 id="full-process-heading">Three simple steps.</h2></div><p>Most appointments take 15 minutes. Larger collections can take longer.</p></div>
         <ol className="full-process__list">{steps.map(([heading, copy], index) => <li key={heading}><span>0{index + 1}</span><div><h3>{heading}</h3><p>{copy}</p></div></li>)}</ol>
       </div>
     </section>

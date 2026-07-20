@@ -4,6 +4,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { site } from "@/content/site";
 import Link from "next/link";
 import { createPageMetadata } from "@/lib/metadata";
+import { VisualMarker } from "@/components/visual-marker";
 
 export const metadata = createPageMetadata({
   title: "Mail-in gold valuation",
@@ -25,6 +26,7 @@ export default function MailIn() {
         <div className="container">
           <div className="service-unavailable__panel">
             <p className="eyebrow">Mail-in valuation</p>
+            <VisualMarker name="post" label="Mail-in valuation pack" />
             <h1>This service is not currently available.</h1>
             <p>We are confirming the postage, insurance and return arrangements before accepting items by mail.</p>
             <p>You can still receive a free, private valuation at a local Gold Table event.</p>
@@ -41,6 +43,7 @@ export default function MailIn() {
       <div className="container split-grid">
         <div>
           <p className="eyebrow">A convenient alternative</p>
+          <VisualMarker name="post" label="Mail-in valuation pack" />
           <h1>Cannot make it to an event?</h1>
           <p className="content-hero__intro">Request a secure valuation pack and receive clear instructions for sending your items.</p>
           <p>Insurance and return arrangements must be confirmed before this service launches.</p>
