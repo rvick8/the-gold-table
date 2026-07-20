@@ -13,12 +13,7 @@ export default function ThankYou() {
     <div className="container status-page__content">
       <p className="eyebrow">Enquiry received</p>
       <h1>Thank you.</h1>
-      <p className="status-page__intro">The team will review the details you supplied and follow up using your chosen contact method.</p>
-      <ol className="status-page__steps" aria-label="What happens next">
-        <li><span>01</span><div><strong>Your enquiry is received</strong><p>Your submitted details are ready for the team to review.</p></div></li>
-        <li><span>02</span><div><strong>A person reviews the details</strong><p>We use the contact method you chose for the follow-up.</p></div></li>
-        <li><span>03</span><div><strong>You remain in control</strong><p>An enquiry or valuation request does not commit you to a sale.</p></div></li>
-      </ol>
+      <p className="status-page__intro">The team will review your details and follow up using the contact method you chose.</p>
       <div className="status-actions"><Link className="button button--ink" href="/events">View local events</Link><Link className="text-link" href="/">Return home</Link></div>
     </div>
   </section>;

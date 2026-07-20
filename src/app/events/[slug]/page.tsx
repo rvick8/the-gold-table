@@ -9,7 +9,6 @@ import { EventCard } from "@/components/event-card";
 import { GoldTableForm } from "@/components/forms";
 import { StructuredData } from "@/components/structured-data";
 import { FaqAccordion } from "@/components/faq-accordion";
-import { AssuranceRibbon } from "@/components/assurance-ribbon";
 import { faqs } from "@/content/faqs";
 import { site } from "@/content/site";
 import { createPageMetadata } from "@/lib/metadata";
@@ -69,18 +68,18 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
       <div className="container event-detail-hero__grid">
         <div className="event-detail-hero__copy">
           <p className="eyebrow">{upcoming ? "Free local gold valuation" : cancelled ? "This event has been cancelled" : "This event has ended"}</p>
-          <h1>{cancelled ? "Cancelled: gold valuation event" : upcoming ? "Free gold valuation" : "Gold valuation event"} at {event.venueName}, {event.town}</h1>
+          <h1>{cancelled ? "Event cancelled" : upcoming ? "Gold valuation" : "Gold valuation event"} at {event.venueName}</h1>
           <p className="event-detail-hero__intro">{event.shortDescription}</p>
 
           <dl className="event-essentials">
-            <div><dt>Date</dt><dd>{formatEventDate(event.startDateTime)}{upcoming ? <><br /><a href={`/api/calendar/${event.slug}`}>Add event hours to calendar <span aria-hidden="true">↓</span></a></> : null}</dd></div>
+            <div><dt>Date</dt><dd>{formatEventDate(event.startDateTime)}{upcoming ? <><br /><a href={`/api/calendar/${event.slug}`}>Add to calendar <span aria-hidden="true">↓</span></a></> : null}</dd></div>
             <div><dt>Time</dt><dd>{formatEventTime(event.startDateTime)}–{formatEventTime(event.endDateTime)}</dd></div>
             <div><dt>Address</dt><dd>{event.addressLine1},<br />{event.town}, {event.postcode}.<br /><a href={directionsUrl} target="_blank" rel="noreferrer">Get directions <span aria-hidden="true">↗</span></a></dd></div>
-            <div><dt>Visiting</dt><dd>{event.walkInsWelcome ? "Walk-ins welcome; confirmed times are prioritised." : "Appointment requests only."}<br />{event.appointmentMinutes}-minute appointments.</dd></div>
+            <div><dt>Visiting</dt><dd>{event.walkInsWelcome ? "Walk-ins welcome. You can also request a time." : "Appointment requests only."}<br />{event.appointmentMinutes}-minute appointments.</dd></div>
           </dl>
 
           {upcoming ? <div className="event-detail-hero__actions">
-            <a className="button button--gold" href="#request-time">Request a free time <span aria-hidden="true">→</span></a>
+            <a className="button button--gold" href="#request-time">Request a time <span aria-hidden="true">→</span></a>
             <a className="text-link" href={directionsUrl} target="_blank" rel="noreferrer">Directions <span aria-hidden="true">↗</span></a>
           </div> : <div className="notice-panel"><strong>{cancelled ? "This event will not be taking place." : "Appointment requests have closed for this date."}</strong><p>See current events to find another Gold Table near you.</p><Link className="text-link" href="/events">View upcoming events <span aria-hidden="true">→</span></Link></div>}
 
@@ -93,11 +92,9 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
       </div>
     </section>
 
-    {upcoming ? <AssuranceRibbon audience="seller" /> : null}
-
     <section className="section visit-section" aria-labelledby="visit-heading">
       <div className="container">
-        <div className="section-heading"><p className="eyebrow">Plan your visit</p><h2 id="visit-heading">Everything you need before you travel.</h2></div>
+        <div className="section-heading"><p className="eyebrow">Plan your visit</p><h2 id="visit-heading">Before you travel.</h2></div>
         <div className="visit-grid">
           <article><span>01</span><h3>Parking</h3><p>{eventNote(event.parkingNotes, "Parking details will be confirmed before this event.")}</p></article>
           <article><span>02</span><h3>Public transport</h3><p>{eventNote(event.transportNotes, "Public-transport details will be confirmed before this event.")}</p></article>
@@ -110,7 +107,7 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
       <div className="container event-expect__grid">
         <div>
           <p className="eyebrow">What to bring</p>
-          <h2 id="expect-heading">Bring what you are curious about.</h2>
+          <h2 id="expect-heading">Bring what you have.</h2>
           <p>Gold jewellery, broken pieces, coins, bullion, watches, silver and inherited collections are all welcome. You do not need to know the weight or carat first.</p>
           <p className="small-note">If you might choose to sell, check your event confirmation for any identification or payment information you need to bring.</p>
         </div>
@@ -130,9 +127,9 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
       <div className="container reserve-grid">
         <div className="reserve-copy">
           <p className="eyebrow">Request an appointment</p>
-          <h2 id="request-time-heading">Choose a free 15-minute time.</h2>
-          <p>Send your preferred time so the team knows to expect you. We will pass the request to the event team for confirmation.</p>
-          {event.walkInsWelcome ? <div className="walk-in-note"><strong>Prefer to keep it flexible?</strong><p>Walk-ins are welcome during the advertised hours, although guests with confirmed times are prioritised.</p></div> : null}
+          <h2 id="request-time-heading">Request a 15-minute time.</h2>
+          <p>Send your preferred time. The event team will confirm it with you.</p>
+          {event.walkInsWelcome ? <div className="walk-in-note"><strong>Prefer to keep it flexible?</strong><p>Walk in during the advertised hours, or request a time if you would rather plan ahead.</p></div> : null}
           <ul className="check-list"><li>Free to request</li><li>No obligation to sell</li><li>Takes about a minute</li></ul>
         </div>
         <GoldTableForm kind="event_reservation" event={event} />
@@ -141,8 +138,8 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
 
     <section className="section event-faq" aria-labelledby="event-faq-heading">
       <div className="container home-faq__grid">
-        <div><p className="eyebrow">Before you attend</p><h2 id="event-faq-heading">Common questions.</h2><p>These answers cover the valuation, offers and what happens if you decide not to sell.</p></div>
-        <FaqAccordion items={faqs.slice(0, 7)} />
+        <div><p className="eyebrow">Before you attend</p><h2 id="event-faq-heading">Need to know.</h2><p>Short answers about the valuation and your choices.</p></div>
+        <FaqAccordion items={faqs.slice(0, 5)} />
       </div>
     </section>
 

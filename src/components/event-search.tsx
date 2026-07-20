@@ -51,12 +51,12 @@ export function EventSearch({ events, initialQuery = "" }: { events: GoldTableEv
 
   return <div className="event-search">
     <form className="event-search__form" onSubmit={applySearch} role="search">
-      <label htmlFor="event-search">Enter your postcode, town or borough</label>
+      <label htmlFor="event-search">Postcode, town or borough</label>
       <div className="event-search__row">
         <input id="event-search" type="search" value={draft} onChange={(event) => setDraft(event.target.value)} placeholder="e.g. TW9 or Richmond" autoComplete="postal-code" />
-        <button className="button button--gold" type="submit">Search events</button>
+        <button className="button button--gold" type="submit">Find events</button>
       </div>
-      <p>Enter a full postcode, postcode area or place name.</p>
+      <p>Enter a postcode or place name.</p>
     </form>
 
     <div className="event-search__summary" aria-live="polite">
@@ -73,7 +73,6 @@ export function EventSearch({ events, initialQuery = "" }: { events: GoldTableEv
           <span>{monthFormatter.format(date)}</span>
         </div>
         <div className="event-result__main">
-          <p className="event-result__type">{event.venueType}</p>
           <h2>{event.venueName}</h2>
           <p>{event.addressLine1}, {event.town}, <strong>{event.postcode}</strong></p>
         </div>
@@ -81,12 +80,12 @@ export function EventSearch({ events, initialQuery = "" }: { events: GoldTableEv
           <p><strong>{formatEventTime(event.startDateTime)}–{formatEventTime(event.endDateTime)}</strong></p>
           <p className="event-status"><span aria-hidden="true" />{event.walkInsWelcome ? "Walk-ins welcome" : "Appointment only"}</p>
         </div>
-        <Link className="button button--ink" href={`/events/${event.slug}`}>Event details &amp; times <span aria-hidden="true">→</span></Link>
+        <Link className="button button--ink" href={`/events/${event.slug}`}>See event &amp; request a time <span aria-hidden="true">→</span></Link>
       </article>;
     })}</div> : <div className="event-empty">
       <p className="eyebrow">No exact match yet</p>
-      <h2>We do not have a published event for “{query}”.</h2>
-      <p>Try a nearby borough or postcode area. You can also leave your postcode below and we will record your interest.</p>
+      <h2>No published event for “{query}” yet.</h2>
+      <p>Try a nearby town or postcode area, or leave your postcode below.</p>
       <a className="button button--ink" href="#event-alert">Tell us where to come next</a>
     </div>}
   </div>;

@@ -8,7 +8,7 @@ export const faqs = [
   ["How do you calculate the value?", "The offer considers metal content, weight, condition, possible resale value and the relevant market price. We explain the basis before you decide."],
   ["How and when will I be paid if I sell?", "The available payment method and timing will be explained before you agree to a sale. Check your event confirmation for any payment information you need to bring."],
   ["What identification do I need?", "If identification is required to complete a sale, your event confirmation will explain what to bring. You can still attend for a valuation if you are not ready to sell."],
-  ["Can I attend without an appointment?", "Some events welcome walk-ins. Check the individual event page; guests with confirmed appointment times are prioritised."],
+  ["Can I attend without an appointment?", "Some events welcome walk-ins. Check the individual event page for the visit options."],
   ["Can I bring several items?", "Yes. Bring as many as you can comfortably carry, but a larger collection may need extra time."],
   ["Do you buy silver or watches?", "We can assess many silver items and watches, though not every item will be suitable for purchase."],
   ["What happens if I do not accept the offer?", "You simply take your items home. There is no charge and no pressure to sell."],

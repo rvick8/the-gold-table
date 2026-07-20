@@ -5,9 +5,7 @@ import { MobileNavigation } from "./mobile-navigation";
 
 const links = [
   ["How it works", "/how-it-works"],
-  ["What we buy", "/how-it-works#what-we-buy"],
-  ["FAQs", "/faqs"],
-  ["For venues", "/host"],
+  ["Host an event", "/host"],
 ] as const;
 
 const isConfigured = (value: string) => Boolean(value && !value.startsWith("["));
